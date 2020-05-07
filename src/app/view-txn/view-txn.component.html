@@ -1,0 +1,18 @@
+<table class="table table-primary table-striped table-hover col-md-8 mx-auto mt-3">
+  <tr>
+    <th>Date Of Transaction</th>
+    <th>Description</th>
+    <th>Amount</th>
+    <th>Txn Type</th>
+  </tr>
+  <tr *ngFor="let t of txns">
+    <td>{{t.dateOfTranscation}}</td>
+    <td>{{ t.description | titlecase}}</td>
+    <td>{{t.amount }}</td>
+    <td>{{t.txType }}</td>
+  </tr>
+  <!-- <div class="alert alert-success" *ngIf="msg != undefined">{{msg}}</div> -->
+  <div class="alert alert-danger" *ngIf="errorMsg != undefined">{{errorMsg}}</div>
+</table>
+
+<a class="btn btn-primary" routerLink="/viewtxnquery">Back</a>

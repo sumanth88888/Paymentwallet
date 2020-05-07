@@ -1,0 +1,72 @@
+<div class="my-4 row  bg-dark">
+  <div><input type="button" value="Quik Transactions" (click)="go()" class="btn btn-primary m-4 justify-context">
+  </div>
+  <div><input type="button" value="View Six Months Transaction" (click)="showSixMonths()"
+      class="btn btn-primary m-4 justify-context"></div>
+  <div><input type="button" value="View Transactions For Date Range" (click)="showTxnDateForm()"
+      class="btn btn-primary m-4 justify-context"></div>
+
+
+</div>
+<form *ngIf="txnDateFormFlag" #frm="ngForm" (ngSubmit)="processReport()">
+  <div class="form-row">
+    <div class="form-group col-md-6 mt-3 mx-auto">
+      <label class="m-3">From Date</label>
+      <input type="date" name="fromdate" [(ngModel)]="rform.fromDt" required #fromdate="ngModel" class="form-control" />
+      <div class="alert alert-danger" *ngIf="fromdate.invalid && fromdate.touched">From Date is required</div>
+    </div>
+    <div class="form-group col-md-6 mt-3 mx-auto">
+      <label class="m-3">To Date</label>
+      <input type="date" name="todate" [(ngModel)]="rform.toDt" required #todate="ngModel" class="form-control" />
+      <div class="alert alert-danger" *ngIf="todate.invalid && todate.touched">To Date is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="m-3">Reciepent ID</label>
+    <input type="number" name="recid" [(ngModel)]="rform.receipentId" required pattern="[0-9]{10}" #recid="ngModel"
+      class="form-control mx-sm-3" placeholder="Reciepent ID" aria-describedby="passwordHelpInline">
+    <div class="alert alert-danger" *ngIf="recid.invalid && recid.touched">Recepent Id is required</div>
+    <small id="passwordHelpInline" class="text-muted">
+      Must be 10 characters long.
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label class="m-3">Report Type</label>
+    <div><select class="custom-select" name="rt" required [(ngModel)]="rtype" #rt="ngModel">
+        <option value="">--select report--</option>
+        <option value="0">View All Transactions</option>
+        <option value="1">view txns received from reciepent</option>
+        <option value="2">view txns transferred to reciepent</option>
+
+      </select>
+      <div class="alert alert-danger" *ngIf="rt.invalid && rt.touched ">Select Report type</div>
+      <div class="mt-2 text-center"><input type="submit" value="viewtxnquery" [disabled]="!frm.valid"
+          class="btn btn-success">
+      </div>
+    </div>
+  </div>
+  
+</form>
+
+<div class="alert alert-danger" *ngIf="errorMsg!=undefined">{{errorMsg}}</div>
+
+
+<table class="table table-primary table-striped table-hover mx-auto mt-3">
+  <tr>
+    <th>Date Of Transaction</th>
+    <th>Description</th>
+    <th>Amount</th>
+    <th>Txn Type</th>
+
+  </tr>
+  <tr *ngFor="let t of txns">
+    <td>{{t.dateOfTranscation}}</td>
+    <td>{{ t.description | titlecase}}</td>
+    <td>{{t.amount }}</td>
+    <td>{{t.txType }}</td>
+  </tr>
+
+  <div class="col-auto my-1 mt-3"><input type="button" value="Download Transactions" (click)="downloadPdf()"
+      class="btn btn-success text-white"></div>
+</table>

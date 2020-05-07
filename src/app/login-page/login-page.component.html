@@ -1,0 +1,84 @@
+<!-- <html>
+  <h1 class="m-3 text-center"> 
+    Welcome to {{title}}!
+  </h1>
+
+  <div class="alert alert-success" *ngIf="!showFlag">
+    You have successfully Logged In
+  </div>
+
+  <div class="container" *ngIf="showFlag">
+    <form>
+      <div class="form-group">
+        <label for="un">User Name :</label>
+        <input id="un" type="number" class="form-control" name="userName"
+        [(ngModel)]="username" placeholder="Enter User Name" required pattern="[0-9]{10}" #un="ngModel">
+      </div>
+      <div class="alert alert-danger" *ngIf="un.invalid && un.touched">User Name is required</div>
+
+
+      <div class="form-group">
+        <label for="p">Password</label>
+      <input id ="p" type="password" name="password" class="form-control" placeholder="Enter the password"
+      required [(ngModel)]="password" #pwd="ngModel">
+      </div>
+      <div class="alert alert-danger" *ngIf="pwd.invalid && pwd.touched">
+        Password is required
+      </div>
+
+      <span>No Account?<a routerLink="/signup" routerLinkActive="active">Register</a></span><br>
+      <input type="submit" class="btn btn-success" value="Login" (click)="doLogin()">
+    </form>
+  </div>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/v4-shims.css">
+  <title>Document</title>
+</head>
+
+
+
+<body>
+
+  <div class="alert alert-danger" *ngIf="errorMsg != undefined">{{errorMsg}}</div>
+  <div class="main">
+    <div class="left-side">
+      <img src="../../assets/download.jpg" alt="">
+    </div>
+
+    <div class="container ml-auto">
+      <div class="right-side">
+      <form #accfrm="ngForm" (ngSubmit)="doLogin()">
+        <hr><hr>
+        <h1>Sign In</h1>
+        <div>
+          <i class="fas fa-user"></i>
+          <input id="un" type="text" name="userName"
+        [(ngModel)]="username" placeholder="Enter Phone Number" required pattern="[0-9]{10}" #un="ngModel">
+        </div>
+  
+        <div>
+          <i class="fas fa-key"></i>
+          <input id ="p" type="password" name="password" placeholder="Enter the password"
+          pattern="[A-za-z0-9]{8,}" required [(ngModel)]="password" #pwd="ngModel">
+        </div>
+  
+        <button type="submit" [disabled]="!accfrm.valid">Sign In</button>
+        
+      </form>
+      <div class="signup_link">
+        Not a member?<a routerLink="/signup" routerLinkActive="active">SignUp</a>
+      </div>
+      </div>
+    
+    </div>
+    
+  </div>
+</body>
+</html>

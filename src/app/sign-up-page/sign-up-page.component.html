@@ -1,0 +1,86 @@
+<!-- <h1 class="text-center m-2">Welcome {{title}}</h1>
+<div class="alert alert-success" *ngIf="msg != undefined">{{msg}}</div>
+<div class="alert alert-danger" *ngIf="errorMsg != undefined">{{errorMsg}}</div>
+
+<div class="container">
+    <form #accfrm="ngForm" (ngSubmit)="addAccount()">
+        <div class="form-group">
+          <label for="pn"> Phonenumber : </label>
+          <input class="form-control" type="number" id="pn" name="phoneNo" placeholder="Enter the Phonenumber" required [(ngModel)]="accountForm.phoneNo"
+        #pn="ngModel" />
+       </div>
+    <div class="alert alert-danger" *ngIf="pn.invalid && pn.touched">Phone No is required</div>
+
+      <div class="form-group">
+          <label for="bal"> Balance : </label>
+          <input class="form-control" type="number" id="bal" name="balance" placeholder="Enter the Balance" [(ngModel)]="
+        accountForm.balance" required #bal="ngModel" />/>
+        </div>
+      <div class="alert alert-danger" *ngIf="bal.invalid && bal.touched">Balance is required</div>
+
+      <div class="form-group">
+          <label for="un"> UserName : </label>
+          <input class="form-control" type="text" id="un" name="userName" placeholder="Enter the User Name" required [(ngModel)]="accountForm.userName"
+        #un="ngModel">
+        </div>
+    <div class="alert alert-danger" *ngIf="un.invalid && un.touched">User Name is required</div>
+
+
+      <div class="form-group">
+          <label for="ps"> Password : </label>
+            <input class="form-control" type="password" id="ps" name="password" placeholder="Enter the Password"
+       required pattern="[A-za-z@]{8,}" [(ngModel)]="accountForm.password"
+        #pwd="ngModel" />
+        </div>
+         <div class="alert alert-danger" *ngIf="pwd.invalid && pwd.touched">Password is required</div>
+
+          <input class="btn btn-success" type="submit"  name="submit" value="Create Account"
+      [disabled]="!accfrm.valid" />
+
+      
+  </form>
+    
+</div> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/v4-shims.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container mx-auto">
+    <h1>Registration form</h1>
+    <form #accfrm="ngForm" (ngSubmit)="addAccount()">
+      <div>
+        <i class="fas fa-user"></i>
+        <input  type="text" id="un" name="userName" placeholder="Enter the User Name" required pattern="[A-za-z]{3,}" [(ngModel)]="accountForm.userName" #un="ngModel">
+      </div>
+  
+      <div>
+        <i class="fas fa-phone"></i>
+        <input type="text" placeholder="Phone number" id="pn" name="phoneNo" placeholder="Enter the Phonenumber" required pattern="[0-9]{10}" [(ngModel)]="accountForm.phoneNo" #pn="ngModel" >
+      </div>
+  
+      <div>
+        <i class="fas fa-key"></i>
+        <input type="password" id="ps" name="password" placeholder="Enter the Password" required pattern="[A-za-z@#$]{8,}" [(ngModel)]="accountForm.password" #pwd="ngModel"/>
+      </div>
+  
+      <div>
+        <i class="fas fa-rupee-sign"></i>
+        <input type="number" id="bal" name="balance" placeholder="Enter the Balance" [(ngModel)]=" accountForm.balance" required pattern="[0-9]{1,6}" #bal="ngModel"/>
+      </div>
+  
+     <!-- <input class="btn btn-success" type="submit"  name="submit" value="Create Account" [disabled]="!accfrm.valid" /> -->
+      <button class="btn btn-rounded" name="submit" [disabled]="!accfrm.valid">
+        Create Account
+      </button>
+    </form>
+  </div>
+</body>
+</html>

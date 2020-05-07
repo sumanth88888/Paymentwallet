@@ -1,0 +1,60 @@
+<!-- <div class="alert alert-success" *ngIf="msg != undefined">{{msg}}</div>
+  <div class="alert alert-danger" *ngIf="errorMsg != undefined">{{errorMsg}}</div>
+
+
+<div *ngIf="showFlag">
+<label  class="m-3">Enter Receipent Wallet ID :  </label>
+    <input type="number" id="amount" name="accountId" class="from-control"  required pattern="[0-9]{10}" #toId ="ngModel" [(ngModel)]="tform.toAccountID" /><br>
+   <div class="alert alert-danger" *ngIf="toId.invalid && toId.touched">Receipent ID is required</div>
+
+  <form #accfrm="ngForm" (ngSubmit)="transferFund()">
+    <label  class="m-3"> Enter Amount :  </label>
+    <input type="number" id="amount" name="amount" class="from-control"  required pattern="[0-9]{1,6}" #amt ="ngModel" [(ngModel)]="tform.amt" /><br>
+   <div class="alert alert-danger" *ngIf="amt.invalid && amt.touched">Amount is required</div>
+
+    
+    <button type="submit" class="btn-success p-1 m-1 " [disabled]="!accfrm.valid" >Add Amount</button>
+  </form>
+
+</div> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/v4-shims.css">
+</head>
+<body>
+   <div class="alert alert-success" *ngIf="msg != undefined && showError">{{msg}}</div>
+   <div class="alert alert-danger" *ngIf="msg != undefined && !showError">{{msg}}</div>
+ 
+ 
+ <div class="container" *ngIf="showFlag">
+    <h1>TransferFund</h1>
+    <form #accfrm="ngForm" (ngSubmit)="transferFund()">
+     <div>
+       <i class="fas fa-phone"></i>
+           <input type="toId" id="number" name="accountId"  placeholder="Enter number" class="border-primary-rounded"  required pattern="[0-9]{10}" #toId ="ngModel" [(ngModel)]="tform.toAccountID" />
+   
+       
+     </div>
+   
+     <div>
+    <i class="fas fa-rupee-sign"> </i>
+        <input type="amt" id="amount" name="amount"  placeholder="Enter amount" class="border-primary-rounded"  required pattern="[0-9]{1,6}" #amt ="ngModel" [(ngModel)]="tform.amt" />
+       
+    
+    </div>
+     
+     <button type="submit" class="btn-success p-1 m-1 " [disabled]="!accfrm.valid" >Trnsfer Amount</button>
+   </form>
+ 
+ </div> 
+ 
+ 
+</body>
+</html>

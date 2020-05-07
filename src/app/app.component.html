@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+  
+  <div class="jumbotron">
+    <h1 class="text-center">
+      Welcome to {{title}}!
+    </h1>
+    <div>
+      <a routerLink="/home" routerLinkActive="active" class="btn btn-primary m-4 justify-context float-right">Home</a>
+      <span *ngIf="token !=undefined && token != null" >
+        <a class="btn btn-primary m-4 justify-context float-right text-white" (click)="logout()">Logout</a>
+      </span>
+      <span *ngIf="token == undefined || token ==null">
+        <a class="btn btn-primary m-4 justify-context float-right text-white" routerLink="login">Login</a>
+      </span>
+    </div>
+  </div>
+
+  <router-outlet></router-outlet>
+</body>
+</html>
