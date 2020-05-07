@@ -21,7 +21,6 @@ public class ViewWalletServiceImpl implements ViewWalletService {
 	@Autowired
 	private IWalletDao dao;
 
-	//@Value("${txnlimit}")
 	private int txnLimit= WalletConstants.TXN_LIMIT;
 	
 	public ViewWalletServiceImpl() {
@@ -35,6 +34,7 @@ public class ViewWalletServiceImpl implements ViewWalletService {
 	 * Description   : getting transactions of given user's walletUSerId 
 	 * Return Type   : List(List of Transactions)
 	 * Parameter 1   : String walletUSerId
+	 * @throws       : WalletTXNNotFouException - if number of Transactions is Zero
 	 * 
 	 **********************************************************************************/
 	@Override
@@ -56,6 +56,7 @@ public class ViewWalletServiceImpl implements ViewWalletService {
 	 * Parameter 1   : String walletUSerId
 	 * Parameter 2   : LocalDate fromDate
 	 * Parameter 3   : LocalDate toDate
+	 * @throws       : WalletTXNNotFouException - if number of Transactions is Zero
 	 * 
 	 **********************************************************************************/
 	@Override
@@ -76,6 +77,7 @@ public class ViewWalletServiceImpl implements ViewWalletService {
 	 * Return Type   : List(List of Transactions)
 	 * Parameter 1   : String walletUSerId
 	 * Parameter 2   : String recipentID
+	 * @throws       : WalletTXNNotFouException - if number of Transactions is Zero
 	 * 
 	 **********************************************************************************/
 	@Override
@@ -94,13 +96,14 @@ public class ViewWalletServiceImpl implements ViewWalletService {
 	/**********************************************************************************
 	 * 
 	 * @Author Name  : venkata sai kumar
-	 * Method Name   : findAmountTransferedToReceipent
+	 * Method Name   : getWalletTransactionsTransferedToReceipent
 	 * Description   : getting transactions Transfered from walletUSerId To  recepentID between fromDt to toDate 
 	 * Return Type   : List(List of Transactions)
 	 * Parameter 1   : String walletUSerId
 	 * Parameter 2   : String recipentID
 	 * Parameter 2   : LocalDate fromDate
 	 * Parameter 3   : LocalDate toDate
+	 * @throws       : WalletTXNNotFouException - if number of Transactions is Zero
 	 * 
 	 **********************************************************************************/
 	@Override
@@ -126,6 +129,7 @@ public class ViewWalletServiceImpl implements ViewWalletService {
 	 * Return Type   : List(List of Transactions)
 	 * Parameter 1   : String walletUSerId
 	 * Parameter 2   : String recipentID
+	 * @throws       : WalletTXNNotFouException - if number of Transactions is Zero
 	 * 
 	 **********************************************************************************/
 	@Override
@@ -149,10 +153,11 @@ public class ViewWalletServiceImpl implements ViewWalletService {
 	 * Return Type   : List(List of Transactions)
 	 * Parameter 1   : String walletUSerId
 	 * Parameter 2   : String recipentID
+	 * @throws       : WalletTXNNotFouException - if number of Transactions is Zero
 	 * 
 	 **********************************************************************************/
 	@Override
-	public List<WalletTransaction> getWalletTransactionsReceivedToReceipent(String walletUSerId, String recipentID,
+	public List<WalletTransaction> getWalletTransactionsReceivedReceipent(String walletUSerId, String recipentID,
 			LocalDate fromDt, LocalDate toDate) throws WalletTXNNotFouException {
 		List<WalletTransaction> txnList =  dao.getWalletTransactions(walletUSerId, fromDt, toDate);
 		if(txnList.isEmpty())
@@ -172,6 +177,7 @@ public class ViewWalletServiceImpl implements ViewWalletService {
 	 * Description   : getting transactions of given user's walletUSerId from now to last six months
 	 * Return Type   : List(List of Transactions)
 	 * Parameter 1   : String walletUSerId
+	 * @throws       : WalletTXNNotFouException - if number of Transactions is Zero
 	 * 
 	 **********************************************************************************/
 	@Override
